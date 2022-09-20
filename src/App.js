@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Board from './components/Board/Board'
 
-function App() {
+export default function App() {
+
+  let board = [];
+  const initBoard = () => {
+    for (let i = 0; i < 8; i++) {
+      let row = i
+      for(let i = 0; i < 8; i++) {
+        let block = {
+          id: row+","+i,
+          row: row,
+          column: i
+        }
+        board.push(block);
+      }
+      //console.log(board);
+    }
+  }
+  initBoard()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Board board={ board }> </Board>
+    </>
   );
-}
-
-export default App;
+};
